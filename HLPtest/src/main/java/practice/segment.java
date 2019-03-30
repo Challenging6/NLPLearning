@@ -1,5 +1,6 @@
 package practice;
 import com.hankcs.hanlp.HanLP;
+import com.hankcs.hanlp.corpus.tag.Nature;
 import com.hankcs.hanlp.seg.CRF.CRFSegment;
 import com.hankcs.hanlp.seg.Dijkstra.DijkstraSegment;
 import com.hankcs.hanlp.seg.NShort.NShortSegment;
@@ -59,28 +60,29 @@ public class segment {
 //                                "\n最短路分词:"+shortestSegment.seg(sentence));
 //        }
         /*CRF分词*/
-//        Segment segment = new CRFSegment();
-//        segment.enablePartOfSpeechTagging(true);
-//        List<Term> termList = segment.seg("你看过穆赫兰道吗");
-//        System.out.println(termList);
-//        for (Term term: termList){
-//            if (term.nature == null){
-//                System.out.println("find a new word:"+term.word);
-//            }
-//        }
-        /*创建分词器*/
-        Segment segment;
-        segment = new ViterbiSegment();
-        segment = new DijkstraSegment();
-        segment = new NShortSegment();
-        segment = new AhoCorasickDoubleArrayTrieSegment();
-        segment = new CRFSegment();
-        segment = HanLP.newSegment();
+        Segment segment = new CRFSegment();
+        segment.enablePartOfSpeechTagging(true);
+        List<Term> termList = segment.seg("你看过穆赫兰道吗");
+        System.out.println(termList);
+        for (Term term: termList){
+            if (term.nature == null){
+                System.out.println("find a new word:"+term.word);
+            }
+        }
 
-        String text = "泽田依子是上外日本文化经济学院的外教";
-        System.out.println(StandardTokenizer.segment(text));
-        StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(true);
-        System.out.println(StandardTokenizer.segment(text));
+        /*创建分词器*/
+//        Segment segment;
+//        segment = new ViterbiSegment();
+//        segment = new DijkstraSegment();
+//        segment = new NShortSegment();
+//        segment = new AhoCorasickDoubleArrayTrieSegment();
+//        segment = new CRFSegment();
+//        segment = HanLP.newSegment();
+//
+//        String text = "泽田依子是上外日本文化经济学院的外教";
+//        System.out.println(StandardTokenizer.segment(text));
+//        StandardTokenizer.SEGMENT.enableAllNamedEntityRecognize(true);
+//        System.out.println(StandardTokenizer.segment(text));
 
     }
 }
